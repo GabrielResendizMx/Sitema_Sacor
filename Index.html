@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundación SACOR - Transformando Vidas a Través del Deporte</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #2D7D47;
+            --dark-green: #1F5A32;
+            --light-green: #4CAF50;
+            --accent-green: #81C784;
+            --dark: #0A0A0A;
+            --gray-dark: #1A1A1A;
+            --gray-medium: #2A2A2A;
+            --gray-light: #F5F7FA;
+            --white: #FFFFFF;
+            --orange: #FF6B35;
+            --blue: #4A90E2;
+            --purple: #8B5CF6;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 32px rgba(45, 125, 71, 0.3);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-menu a:before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover:before {
+            width: 100%;
+        }
+
+        /* Page Content */
+        .page-content {
+            display: none;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        /* Hero Section - Fundación */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .hero-bg-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+        }
+
+        .shape-1 {
+            top: 20%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, var(--primary-green), var(--light-green));
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            bottom: -5%;
+            left: -5%;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, var(--orange), var(--blue));
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation: float 4s ease-in-out infinite reverse;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-text h1 .gradient-text {
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green), var(--accent-green));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .hero-text .foundation-label {
+            color: var(--accent-green);
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.4s;
+            box-shadow: 0 8px 32px rgba(45, 125, 71, 0.3);
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 45px rgba(45, 125, 71, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1.2rem 3rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-green);
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 500px;
+        }
+
+        .mission-cards {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .mission-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s;
+            color: white;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-1 {
+            top: 10%;
+            right: 0;
+            width: 220px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .card-2 {
+            top: 45%;
+            right: 15%;
+            width: 200px;
+            animation: float 4s ease-in-out infinite reverse;
+        }
+
+        .card-3 {
+            bottom: 10%;
+            right: 5%;
+            width: 210px;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .mission-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .mission-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .mission-card p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* About Foundation Section */
+        .about-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, var(--white) 0%, var(--gray-light) 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .section-subtitle {
+            color: var(--primary-green);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .mission-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .mission-item {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .mission-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .mission-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--orange), var(--blue), var(--purple));
+        }
+
+        .mission-header {
+            padding: 3rem 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .mission-emoji {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+        }
+
+        .mission-item h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .mission-item p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.8;
+            padding: 0 2.5rem 2.5rem;
+        }
+
+        /* Club Deportivo Page */
+        .sports-hero {
+            height: 80vh;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .sports-hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .sports-section {
+            padding: 8rem 2rem;
+            background: var(--white);
+        }
+
+        .sports-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .sport-item {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .sport-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .sport-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--orange), var(--blue), var(--purple));
+        }
+
+        .sport-header {
+            padding: 3rem 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .sport-emoji {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+        }
+
+        .sport-item h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .sport-item p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .sport-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            padding: 0 2.5rem 2.5rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1rem;
+            background: var(--gray-light);
+            border-radius: 15px;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* Matches Section */
+        .matches-section {
+            padding: 8rem 2rem;
+            background: var(--dark);
+            position: relative;
+        }
+
+        .matches-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="grad"><stop offset="0%" stop-color="%232D7D47" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><circle cx="50" cy="50" r="50" fill="url(%23grad)"/></svg>');
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .matches-section .section-title {
+            color: var(--white);
+        }
+
+        .matches-section .section-description {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .matches-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .match-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 2.5rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .match-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--orange), var(--primary-green), var(--blue));
+        }
+
+        .match-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary-green);
+        }
+
+        .match-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .sport-badge {
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .match-date {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        .match-teams {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .team-names {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .vs {
+            background: var(--primary-green);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            margin: 0 1rem;
+            font-size: 0.9rem;
+        }
+
+        .match-location {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-visual {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero-text h1 {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mission-grid, .sports-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .matches-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showPage('inicio')">
+                <div class="logo-icon">
+                    <span style="color: white; font-size: 1.5rem;">⚡</span>
+                </div>
+                SACOR
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a onclick="showPage('inicio')">Fundación</a></li>
+                    <li><a onclick="showPage('club-deportivo')">Club Deportivo</a></li>
+                    <li><a onclick="showPage('partidos')">Partidos</a></li>
+                    <li><a onclick="showPage('equipos')">Equipos</a></li>
+                    <li><a onclick="showPage('resultados')">Resultados</a></li>
+                    <li><a onclick="showPage('contacto')">Contacto</a></li>
+                </ul>
+                <button class="mobile-menu-btn">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Página de Inicio - Fundación SACOR -->
+    <div id="inicio" class="page-content active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+            </div>
+            
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="foundation-label">Fundación</div>
+                    <h1>
+                        <span class="gradient-text">SACOR</span>
+                    </h1>
+                    <p>Transformamos comunidades a través del deporte y la educación. Fomentamos valores, desarrollamos talentos y creamos oportunidades para personas de todas las edades, construyendo un futuro más próspero y saludable.</p>
+                    <div class="hero-buttons">
+                        <button class="btn-primary" onclick="showPage('club-deportivo')">
+                            🏆 Conocer Club Deportivo
+                        </button>
+                        <a href="#mision" class="btn-secondary">Nuestra Misión</a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="mission-cards">
+                        <div class="mission-card card-1">
+                            <span class="mission-icon">🤝</span>
+                            <h3>Inclusión Social</h3>
+                            <p>Creando oportunidades para todos</p>
+                        </div>
+                        <div class="mission-card card-2">
+                            <span class="mission-icon">🎯</span>
+                            <h3>Desarrollo Personal</h3>
+                            <p>Formando líderes del mañana</p>
+                        </div>
+                        <div class="mission-card card-3">
+                            <span class="mission-icon">🌱</span>
+                            <h3>Impacto Comunitario</h3>
+                            <p>Transformando vidas diariamente</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Foundation Section -->
+        <section class="about-section" id="mision">
+            <div class="section-header fade-in">
+                <div class="section-subtitle">Nuestra Esencia</div>
+                <h2 class="section-title">Más Que Una Fundación</h2>
+                <p class="section-description">Somos un motor de cambio social que utiliza el deporte como herramienta de transformación, educación y desarrollo humano integral.</p>
+            </div>
+
+            <div class="mission-grid">
+                <div class="mission-item fade-in">
+                    <div class="mission-header">
+                        <span class="mission-emoji">🎯</span>
+                        <h3>Nuestra Misión</h3>
+                    </div>
+                    <p>Promover el desarrollo integral de personas y comunidades a través del deporte, la educación y la inclusión social, creando oportunidades que transformen vidas y fortalezcan el tejido social.</p>
+                </div>
+
+                <div class="mission-item fade-in">
+                    <div class="mission-header">
+                        <span class="mission-emoji">👁️</span>
+                        <h3>Nuestra Visión</h3>
+                    </div>
+                    <p>Ser la fundación líder en transformación social a través del deporte, reconocida por formar ciudadanos íntegros, competitivos y comprometidos con el desarrollo de sus comunidades.</p>
+                </div>
+
+                <div class="mission-item fade-in">
+                    <div class="mission-header">
+                        <span class="mission-emoji">💎</span>
+                        <h3>Nuestros Valores</h3>
+                    </div>
+                    <p>Integridad, excelencia, inclusión, trabajo en equipo, responsabilidad social y compromiso con la comunidad. Valores que guían cada acción y decisión en nuestra organización.</p>
+                </div>
+
+                <div class="mission-item fade-in">
+                    <div class="mission-header">
+                        <span class="mission-emoji">🌟</span>
+                        <h3>Programas Sociales</h3>
+                    </div>
+                    <p>Desarrollo de programas deportivos gratuitos, becas estudiantiles, capacitación laboral y apoyo a familias vulnerables, creando un ecosistema integral de desarrollo comunitario.</p>
+                </div>
+
+                <div class="mission-item fade-in">
+                    <div class="mission-header">
+                        <span class="mission-emoji">🏅</span>
+                        <h3>Formación Deportiva</h3>
+                    </div>
+                    <p>Escuelas deportivas especializadas que no solo forman atletas, sino ciudadanos ejemplares con disciplina, valores y herramientas para el éxito en la vida.</p>
+                </div>
+
+                <div class="mission-item fade-in">
+                    <div class="mission-header">
+                        <span class="mission-emoji">🤝</span>
+                        <h3>Alianzas Estratégicas</h3>
+                    </div>
+                    <p>Colaboraciones con instituciones educativas, gubernamentales y empresas privadas para maximizar nuestro impacto y alcance en la transformación social.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Página Club Deportivo -->
+    <div id="club-deportivo" class="page-content">
+        <!-- Sports Hero Section -->
+        <section class="sports-hero">
+            <div class="sports-hero-content">
+                <div class="section-subtitle" style="color: var(--accent-green);">Club Deportivo</div>
+                <h1 style="font-size: 4rem; font-weight: 800; margin-bottom: 2rem;">SACOR S.C.</h1>
+                <p style="font-size: 1.4rem; opacity: 0.9; max-width: 800px; margin: 0 auto;">Donde nacen los campeones. Nuestro club deportivo ofrece programas de alta calidad en fútbol, basketball y volleyball, combinando excelencia deportiva con formación en valores.</p>
+            </div>
+        </section>
+
+        <!-- Sports Section -->
+        <section class="sports-section">
+            <div class="section-header fade-in">
+                <div class="section-subtitle">Nuestros Deportes</div>
+                <h2 class="section-title">Excelencia en Cada Disciplina</h2>
+                <p class="section-description">Programas deportivos de élite diseñados para desarrollar atletas completos con técnica superior, mentalidad ganadora y valores sólidos.</p>
+            </div>
+
+            <div class="sports-grid">
+                <div class="sport-item fade-in">
+                    <div class="sport-header">
+                        <span class="sport-emoji">⚽</span>
+                        <h3>Fútbol</h3>
+                        <p>El deporte rey en SACOR. Desarrollamos técnica, estrategia y trabajo en equipo a través de entrenamientos intensivos y competencias de alto nivel que forman jugadores completos.</p>
+                    </div>
+                    <div class="sport-stats">
+                        <div class="stat">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Equipos</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">120</div>
+                            <div class="stat-label">Jugadores</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">15</div>
+                            <div class="stat-label">Partidos/Mes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sport-item fade-in">
+                    <div class="sport-header">
+                        <span class="sport-emoji">🏀</span>
+                        <h3>Basketball</h3>
+                        <p>Agilidad, precisión y estrategia se combinan en nuestras canchas. Formamos jugadores completos con fundamentos sólidos, mentalidad competitiva y gran resistencia física.</p>
+                    </div>
+                    <div class="sport-stats">
+                        <div class="stat">
+                            <div class="stat-number">6</div>
+                            <div class="stat-label">Equipos</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">95</div>
+                            <div class="stat-label">Jugadores</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Partidos/Mes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sport-item fade-in">
+                    <div class="sport-header">
+                        <span class="sport-emoji">🏐</span>
+                        <h3>Volleyball</h3>
+                        <p>Coordinación perfecta y espíritu de equipo definen nuestro volleyball. Entrenamos atletas versátiles con técnica depurada, reflejos rápidos y gran resistencia.</p>
+                    </div>
+                    <div class="sport-stats">
+                        <div class="stat">
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">Equipos</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">72</div>
+                            <div class="stat-label">Jugadores</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Partidos/Mes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Página de Partidos -->
+    <div id="partidos" class="page-content">
+        <!-- Matches Section -->
+        <section class="matches-section" style="margin-top: 80px;">
+            <div class="section-header fade-in">
+                <div class="section-subtitle" style="color: var(--accent-green);">Próximos Enfrentamientos</div>
+                <h2 class="section-title">La Acción No Para</h2>
+                <p class="section-description">Ven y disfruta de partidos emocionantes cada semana. Apoya a tus equipos favoritos y vive la pasión del deporte en vivo.</p>
+            </div>
+
+            <div class="matches-container">
+                <div class="match-card fade-in">
+                    <div class="match-header">
+                        <span class="sport-badge">Fútbol</span>
+                        <span class="match-date">Sáb 25 Ago • 4:00 PM</span>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team-names">
+                            Tigres SACOR <span class="vs">VS</span> Leones Unidos
+                        </div>
+                    </div>
+                    <div class="match-location">📍 Cancha Principal • Estadio SACOR</div>
+                </div>
+
+                <div class="match-card fade-in">
+                    <div class="match-header">
+                        <span class="sport-badge">Basketball</span>
+                        <span class="match-date">Dom 26 Ago • 6:00 PM</span>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team-names">
+                            Águilas SACOR <span class="vs">VS</span> Halcones FC
+                        </div>
+                    </div>
+                    <div class="match-location">📍 Cancha Cubierta • Pabellón Norte</div>
+                </div>
+
+                <div class="match-card fade-in">
+                    <div class="match-header">
+                        <span class="sport-badge">Volleyball</span>
+                        <span class="match-date">Mar 28 Ago • 7:00 PM</span>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team-names">
+                            Cóndores SACOR <span class="vs">VS</span> Pumas Elite
+                        </div>
+                    </div>
+                    <div class="match-location">📍 Gimnasio Norte • Complejo Deportivo</div>
+                </div>
+
+                <div class="match-card fade-in">
+                    <div class="match-header">
+                        <span class="sport-badge">Fútbol</span>
+                        <span class="match-date">Jue 30 Ago • 8:00 PM</span>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team-names">
+                            Jaguares SACOR <span class="vs">VS</span> Lobos Azules
+                        </div>
+                    </div>
+                    <div class="match-location">📍 Cancha Secundaria • Zona Sur</div>
+                </div>
+
+                <div class="match-card fade-in">
+                    <div class="match-header">
+                        <span class="sport-badge">Basketball</span>
+                        <span class="match-date">Vie 31 Ago • 7:30 PM</span>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team-names">
+                            Halcones SACOR <span class="vs">VS</span> Coyotes FC
+                        </div>
+                    </div>
+                    <div class="match-location">📍 Cancha Cubierta • Pabellón Sur</div>
+                </div>
+
+                <div class="match-card fade-in">
+                    <div class="match-header">
+                        <span class="sport-badge">Volleyball</span>
+                        <span class="match-date">Sáb 1 Sep • 5:00 PM</span>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team-names">
+                            Panteras SACOR <span class="vs">VS</span> Tigres Elite
+                        </div>
+                    </div>
+                    <div class="match-location">📍 Gimnasio Central • Complejo Norte</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Página de Equipos -->
+    <div id="equipos" class="page-content">
+        <section class="sports-section" style="margin-top: 80px;">
+            <div class="section-header fade-in">
+                <div class="section-subtitle">Nuestros Equipos</div>
+                <h2 class="section-title">Guerreros del Deporte</h2>
+                <p class="section-description">Conoce a los equipos que representan el espíritu competitivo y los valores de SACOR en cada competencia.</p>
+            </div>
+
+            <div class="sports-grid">
+                <!-- Equipos de Fútbol -->
+                <div class="sport-item fade-in">
+                    <div class="sport-header">
+                        <span class="sport-emoji">🦁</span>
+                        <h3>Tigres SACOR</h3>
+                        <p>Nuestro equipo insignia de fútbol. Con una tradición ganadora y un estilo de juego agresivo, los Tigres han conquistado múltiples torneos locales.</p>
+                    </div>
+                    <div class="sport-stats">
+                        <div class="stat">
+                            <div class="stat-number">15</div>
+                            <div class="stat-label">Jugadores</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Victorias</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Títulos</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sport-item fade-in">
+                    <div class="sport-header">
+                        <span class="sport-emoji">🐆</span>
+                        <h3>Jaguares SACOR</h3>
+                        <p>Velocidad y precisión caracterizan a este equipo de fútbol. Los Jaguares son conocidos por su juego dinámico y su capacidad de adaptación.</p>
+                    </div>
+                    <div class="sport-stats">
+                        <div class="stat">
+                            <div class="stat-number">15</div>
+                            <div class="stat-label">Jugadores</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">6</div>
+                            <div class="stat-label">Victorias</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">Títulos</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Equipos de Basketball -->
+                <div class="sport-item fade-in">
+                    <div class="sport-header">
+                        <span class="sport-emoji">🦅</span>
+                        <h3>Águilas SACOR</h3>
+                        <p>Dominan los aires del basketball con su juego vertical y defensiva agresiva. Las Águilas vuelan alto hacia la victoria en cada partido.</p>
+                    </div>
+                    <div class="sport-stats">
+                        <div class="stat">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Jugadores</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">10</div>
+                            <div class="stat-label">Victorias</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">Títulos</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sport-item fade-in">
+                    <div class="sport-header">
+                        <span class="sport-emoji">🦅</span>
+                        <h3>Halcones SACOR</h3>
+                        <p>Precisión y estrategia definen a los Halcones. Con una visión de juego excepcional, este equipo de basketball siempre encuentra la oportunidad perfecta.</p>
+                    </div>
+                    <div class="sport-stats">
+                        <div class="stat">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Jugadores</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">7</div>
+                            <div class="stat-label">Victorias</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">Títulos</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Equipos de Volleyball -->
+                <div class="sport-item fade-in">
+                    <div class="sport-header">
+                        <span class="sport-emoji">🦅</span>
+                        <h3>Cóndores SACOR</h3>
+                        <p>Majestuosos en la cancha de volleyball, los Cóndores combinan potencia y técnica para dominar cada set con gran coordinación de equipo.</p>
+                    </div>
+                    <div class="sport-stats">
+                        <div class="stat">
+                            <div class="stat-number">10</div>
+                            <div class="stat-label">Jugadores</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">9</div>
+                            <div class="stat-label">Victorias</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Títulos</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sport-item fade-in">
+                    <div class="sport-header">
+                        <span class="sport-emoji">🐆</span>
+                        <h3>Panteras SACOR</h3>
+                        <p>Agilidad felina y reflejos rápidos caracterizan a las Panteras de volleyball. Su juego fluido y coordinado las convierte en rivales temibles.</p>
+                    </div>
+                    <div class="sport-stats">
+                        <div class="stat">
+                            <div class="stat-number">10</div>
+                            <div class="stat-label">Jugadores</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">Victorias</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">1</div>
+                            <div class="stat-label">Títulos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Página de Resultados -->
+    <div id="resultados" class="page-content">
+        <section class="matches-section" style="margin-top: 80px;">
+            <div class="section-header fade-in">
+                <div class="section-subtitle" style="color: var(--accent-green);">Resultados Recientes</div>
+                <h2 class="section-title">Historias de Victoria</h2>
+                <p class="section-description">Revive los momentos más emocionantes de nuestros equipos y celebra cada triunfo conseguido en las canchas.</p>
+            </div>
+
+            <div class="matches-container">
+                <div class="match-card fade-in">
+                    <div class="match-header">
+                        <span class="sport-badge">Fútbol</span>
+                        <span class="match-date">Dom 18 Ago • FINALIZADO</span>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team-names">
+                            Tigres SACOR <span class="vs" style="background: #4CAF50;">3-1</span> FC Barcelona
+                        </div>
+                    </div>
+                    <div class="match-location">🏆 Victoria • Estadio SACOR</div>
+                </div>
+
+                <div class="match-card fade-in">
+                    <div class="match-header">
+                        <span class="sport-badge">Basketball</span>
+                        <span class="match-date">Sáb 17 Ago • FINALIZADO</span>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team-names">
+                            Águilas SACOR <span class="vs" style="background: #4CAF50;">89-76</span> Thunder Elite
+                        </div>
+                    </div>
+                    <div class="match-location">🏆 Victoria • Pabellón Norte</div>
+                </div>
+
+                <div class="match-card fade-in">
+                    <div class="match-header">
+                        <span class="sport-badge">Volleyball</span>
+                        <span class="match-date">Vie 16 Ago • FINALIZADO</span>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team-names">
+                            Cóndores SACOR <span class="vs" style="background: #FF6B35;">2-3</span> Voleibol Plus
+                        </div>
+                    </div>
+                    <div class="match-location">💪 Esfuerzo • Gimnasio Central</div>
+                </div>
+
+                <div class="match-card fade-in">
+                    <div class="match-header">
+                        <span class="sport-badge">Fútbol</span>
+                        <span class="match-date">Jue 15 Ago • FINALIZADO</span>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team-names">
+                            Jaguares SACOR <span class="vs" style="background: #4CAF50;">2-0</span> Real Unidos
+                        </div>
+                    </div>
+                    <div class="match-location">🏆 Victoria • Cancha Sur</div>
+                </div>
+
+                <div class="match-card fade-in">
+                    <div class="match-header">
+                        <span class="sport-badge">Basketball</span>
+                        <span class="match-date">Mar 13 Ago • FINALIZADO</span>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team-names">
+                            Halcones SACOR <span class="vs" style="background: #4CAF50;">95-88</span> Sharks BC
+                        </div>
+                    </div>
+                    <div class="match-location">🏆 Victoria • Pabellón Sur</div>
+                </div>
+
+                <div class="match-card fade-in">
+                    <div class="match-header">
+                        <span class="sport-badge">Volleyball</span>
+                        <span class="match-date">Lun 12 Ago • FINALIZADO</span>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team-names">
+                            Panteras SACOR <span class="vs" style="background: #4CAF50;">3-1</span> Volleyball Stars
+                        </div>
+                    </div>
+                    <div class="match-location">🏆 Victoria • Gimnasio Norte</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Página de Contacto -->
+    <div id="contacto" class="page-content">
+        <section class="about-section" style="margin-top: 80px;">
+            <div class="section-header fade-in">
+                <div class="section-subtitle">Contáctanos</div>
+                <h2 class="section-title">Únete a la Familia SACOR</h2>
+                <p class="section-description">¿Listo para ser parte de nuestra comunidad? Contáctanos y descubre todas las oportunidades que tenemos para ti.</p>
+            </div>
+
+            <div class="mission-grid">
+                <div class="mission-item fade-in">
+                    <div class="mission-header">
+                        <span class="mission-emoji">📍</span>
+                        <h3>Ubicación</h3>
+                    </div>
+                    <p>Av. Deportiva #123, Colonia San José<br>Ciudad de México, CDMX 01234<br>México</p>
+                </div>
+
+                <div class="mission-item fade-in">
+                    <div class="mission-header">
+                        <span class="mission-emoji">📞</span>
+                        <h3>Teléfonos</h3>
+                    </div>
+                    <p>Oficina Principal: (55) 1234-5678<br>Club Deportivo: (55) 8765-4321<br>WhatsApp: (55) 9999-0000</p>
+                </div>
+
+                <div class="mission-item fade-in">
+                    <div class="mission-header">
+                        <span class="mission-emoji">✉️</span>
+                        <h3>Correos</h3>
+                    </div>
+                    <p>Información General: info@sacor.org<br>Club Deportivo: deportes@sacor.org<br>Prensa: prensa@sacor.org</p>
+                </div>
+
+                <div class="mission-item fade-in">
+                    <div class="mission-header">
+                        <span class="mission-emoji">🕒</span>
+                        <h3>Horarios</h3>
+                    </div>
+                    <p>Lunes a Viernes: 8:00 AM - 8:00 PM<br>Sábados: 9:00 AM - 6:00 PM<br>Domingos: 10:00 AM - 4:00 PM</p>
+                </div>
+
+                <div class="mission-item fade-in">
+                    <div class="mission-header">
+                        <span class="mission-emoji">🌐</span>
+                        <h3>Redes Sociales</h3>
+                    </div>
+                    <p>Facebook: @FundacionSACOR<br>Instagram: @sacor_oficial<br>Twitter: @SACOR_mx</p>
+                </div>
+
+                <div class="mission-item fade-in">
+                    <div class="mission-header">
+                        <span class="mission-emoji">🎯</span>
+                        <h3>Cómo Unirte</h3>
+                    </div>
+                    <p>Inscripciones abiertas todo el año. Ven a conocer nuestras instalaciones y descubre el programa perfecto para ti o tu familia.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Fundación SACOR</h3>
+                <p>Transformando vidas a través del deporte y la educación. Somos más que una fundación, somos una familia unida por la pasión al deporte y el compromiso con la excelencia.</p>
+                <p>Construyendo un futuro mejor para nuestras comunidades desde 2020.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <p style="cursor: pointer;" onclick="showPage('inicio')">• Fundación SACOR</p>
+                <p style="cursor: pointer;" onclick="showPage('club-deportivo')">• Club Deportivo</p>
+                <p style="cursor: pointer;" onclick="showPage('partidos')">• Próximos Partidos</p>
+                <p style="cursor: pointer;" onclick="showPage('equipos')">• Nuestros Equipos</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>📍 Av. Deportiva #123, CDMX</p>
+                <p>📞 (55) 1234-5678</p>
+                <p>✉️ info@sacor.org</p>
+                <p>🌐 www.sacor.org</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Fundación SACOR. Todos los derechos reservados. | Diseño y desarrollo con ❤️ para la comunidad</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navegación entre páginas
+        function showPage(pageId) {
+            // Ocultar todas las páginas
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Mostrar la página seleccionada
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            // Scroll al top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Smooth scrolling para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer para animaciones
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0.1s';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observar todos los elementos fade-in
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+                header.style.backdropFilter = 'blur(20px)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.9)';
+                header.style.backdropFilter = 'blur(20px)';
+            }
+        });
+
+        // Mobile menu (funcionalidad básica)
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>
