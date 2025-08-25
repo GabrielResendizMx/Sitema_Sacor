@@ -1,2 +1,2 @@
 # Sitema_Sacor
-Sitema ERP
+Aplicación Web
